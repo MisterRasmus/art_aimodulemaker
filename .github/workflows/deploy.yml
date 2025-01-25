@@ -26,7 +26,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER_STAGING }}
           username: ${{ secrets.FTP_USERNAME_STAGING }}
           password: ${{ secrets.FTP_PASSWORD_STAGING }}
-          server-dir: modules/rl_aimodulemaker/
+          server-dir: modules/art_aimodulemaker/
           exclude: |
             **/.git*
             **/.git*/**
@@ -52,7 +52,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER_PRODUCTION }}
           username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
           password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
-          server-dir: modules/rl_aimodulemaker/
+          server-dir: modules/art_aimodulemaker/
           exclude: |
             **/.git*
             **/.git*/**

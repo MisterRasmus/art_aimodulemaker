@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="panel-heading">
-        <i class="icon icon-cog"></i> {l s='AI Module Maker Settings' mod='rl_aimodulemaker'}
+        <i class="icon icon-cog"></i> {l s='AI Module Maker Settings' mod='art_aimodulemaker'}
     </div>
     
     <div class="panel-body">
@@ -8,32 +8,32 @@
             {* API Settings Tab *}
             <div class="panel">
                 <div class="panel-heading">
-                    <i class="icon icon-key"></i> {l s='API Settings' mod='rl_aimodulemaker'}
+                    <i class="icon icon-key"></i> {l s='API Settings' mod='art_aimodulemaker'}
                 </div>
                 <div class="panel-body">
                     {* OpenAI Settings *}
                     <div class="form-group">
                         <label class="control-label col-lg-3">
-                            {l s='OpenAI API Key' mod='rl_aimodulemaker'}
+                            {l s='OpenAI API Key' mod='art_aimodulemaker'}
                         </label>
                         <div class="col-lg-6">
                             <input type="password" 
-                                   name="RLAIMODULEMAKER_OPENAI_API_KEY" 
+                                   name="ARTAIMODULEMAKER_OPENAI_API_KEY" 
                                    value="{$currentSettings.openai.key|escape:'html':'UTF-8'}" 
                                    class="form-control">
                         </div>
                         <div class="col-lg-3">
                             <button type="button" class="btn btn-default test-api" data-api="openai">
-                                <i class="icon icon-check"></i> {l s='Test Connection' mod='rl_aimodulemaker'}
+                                <i class="icon icon-check"></i> {l s='Test Connection' mod='art_aimodulemaker'}
                             </button>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-3">
-                            {l s='OpenAI Model' mod='rl_aimodulemaker'}
+                            {l s='OpenAI Model' mod='art_aimodulemaker'}
                         </label>
                         <div class="col-lg-6">
-                            <select name="RLAIMODULEMAKER_OPENAI_MODEL" class="form-control">
+                            <select name="ARTAIMODULEMAKER_OPENAI_MODEL" class="form-control">
                                 <option value="gpt-4" {if $currentSettings.openai.model == 'gpt-4'}selected{/if}>
                                     GPT-4 (Most capable)
                                 </option>
@@ -47,26 +47,26 @@
                     {* Claude Settings *}
                     <div class="form-group">
                         <label class="control-label col-lg-3">
-                            {l s='Claude API Key' mod='rl_aimodulemaker'}
+                            {l s='Claude API Key' mod='art_aimodulemaker'}
                         </label>
                         <div class="col-lg-6">
                             <input type="password" 
-                                   name="RLAIMODULEMAKER_CLAUDE_API_KEY" 
+                                   name="ARTAIMODULEMAKER_CLAUDE_API_KEY" 
                                    value="{$currentSettings.claude.key|escape:'html':'UTF-8'}" 
                                    class="form-control">
                         </div>
                         <div class="col-lg-3">
                             <button type="button" class="btn btn-default test-api" data-api="claude">
-                                <i class="icon icon-check"></i> {l s='Test Connection' mod='rl_aimodulemaker'}
+                                <i class="icon icon-check"></i> {l s='Test Connection' mod='art_aimodulemaker'}
                             </button>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-3">
-                            {l s='Claude Model' mod='rl_aimodulemaker'}
+                            {l s='Claude Model' mod='art_aimodulemaker'}
                         </label>
                         <div class="col-lg-6">
-                            <select name="RLAIMODULEMAKER_CLAUDE_MODEL" class="form-control">
+                            <select name="ARTAIMODULEMAKER_CLAUDE_MODEL" class="form-control">
                                 <option value="claude-3-opus-20240229" {if $currentSettings.claude.model == 'claude-3-opus-20240229'}selected{/if}>
                                     Claude-3 Opus (Most capable)
                                 </option>
@@ -80,45 +80,45 @@
                     {* GitHub Settings *}
                     <div class="form-group">
                         <label class="control-label col-lg-3">
-                            {l s='GitHub Token' mod='rl_aimodulemaker'}
+                            {l s='GitHub Token' mod='art_aimodulemaker'}
                         </label>
                         <div class="col-lg-6">
                             <input type="password" 
-                                   name="RLAIMODULEMAKER_GITHUB_TOKEN" 
+                                   name="ARTAIMODULEMAKER_GITHUB_TOKEN" 
                                    value="{$currentSettings.github.token|escape:'html':'UTF-8'}" 
                                    class="form-control">
                             <p class="help-block">
-                                {l s='Create a token with repo and workflow permissions' mod='rl_aimodulemaker'}
+                                {l s='Create a token with repo and workflow permissions' mod='art_aimodulemaker'}
                             </p>
                         </div>
                         <div class="col-lg-3">
                             <button type="button" class="btn btn-default test-api" data-api="github">
-                                <i class="icon icon-check"></i> {l s='Test Connection' mod='rl_aimodulemaker'}
+                                <i class="icon icon-check"></i> {l s='Test Connection' mod='art_aimodulemaker'}
                             </button>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-3">
-                            {l s='GitHub Username' mod='rl_aimodulemaker'}
+                            {l s='GitHub Username' mod='art_aimodulemaker'}
                         </label>
                         <div class="col-lg-6">
                             <input type="text" 
-                                   name="RLAIMODULEMAKER_GITHUB_USERNAME" 
+                                   name="ARTAIMODULEMAKER_GITHUB_USERNAME" 
                                    value="{$currentSettings.github.username|escape:'html':'UTF-8'}" 
                                    class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-lg-3">
-                            {l s='GitHub Organization' mod='rl_aimodulemaker'}
+                            {l s='GitHub Organization' mod='art_aimodulemaker'}
                         </label>
                         <div class="col-lg-6">
                             <input type="text" 
-                                   name="RLAIMODULEMAKER_GITHUB_ORG" 
+                                   name="ARTAIMODULEMAKER_GITHUB_ORG" 
                                    value="{$currentSettings.github.organization|escape:'html':'UTF-8'}" 
                                    class="form-control">
                             <p class="help-block">
-                                {l s='Optional: Leave empty to use personal account' mod='rl_aimodulemaker'}
+                                {l s='Optional: Leave empty to use personal account' mod='art_aimodulemaker'}
                             </p>
                         </div>
                     </div>
@@ -128,17 +128,17 @@
             {* General Settings Tab *}
             <div class="panel">
                 <div class="panel-heading">
-                    <i class="icon icon-wrench"></i> {l s='General Settings' mod='rl_aimodulemaker'}
+                    <i class="icon icon-wrench"></i> {l s='General Settings' mod='art_aimodulemaker'}
                 </div>
                 <div class="panel-body">
                     {* Default Author *}
                     <div class="form-group">
                         <label class="control-label col-lg-3">
-                            {l s='Default Author' mod='rl_aimodulemaker'}
+                            {l s='Default Author' mod='art_aimodulemaker'}
                         </label>
                         <div class="col-lg-6">
                             <input type="text" 
-                                   name="RLAIMODULEMAKER_DEFAULT_AUTHOR" 
+                                   name="ARTAIMODULEMAKER_DEFAULT_AUTHOR" 
                                    value="{$currentSettings.general.default_author|escape:'html':'UTF-8'}" 
                                    class="form-control">
                         </div>
@@ -147,16 +147,16 @@
                     {* Auto Commit *}
                     <div class="form-group">
                         <label class="control-label col-lg-3">
-                            {l s='Auto Commit Changes' mod='rl_aimodulemaker'}
+                            {l s='Auto Commit Changes' mod='art_aimodulemaker'}
                         </label>
                         <div class="col-lg-6">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" 
-                                           name="RLAIMODULEMAKER_AUTO_COMMIT" 
+                                           name="ARTAIMODULEMAKER_AUTO_COMMIT" 
                                            value="1" 
                                            {if $currentSettings.general.auto_commit}checked{/if}>
-                                    {l s='Automatically commit changes to GitHub' mod='rl_aimodulemaker'}
+                                    {l s='Automatically commit changes to GitHub' mod='art_aimodulemaker'}
                                 </label>
                             </div>
                         </div>
@@ -165,10 +165,10 @@
                     {* Default AI Model *}
                     <div class="form-group">
                         <label class="control-label col-lg-3">
-                            {l s='Default AI Model' mod='rl_aimodulemaker'}
+                            {l s='Default AI Model' mod='art_aimodulemaker'}
                         </label>
                         <div class="col-lg-6">
-                            <select name="RLAIMODULEMAKER_DEFAULT_AI" class="form-control">
+                            <select name="ARTAIMODULEMAKER_DEFAULT_AI" class="form-control">
                                 <option value="openai" {if $currentSettings.general.default_ai == 'openai'}selected{/if}>
                                     OpenAI GPT
                                 </option>
@@ -183,8 +183,8 @@
 
             {* Submit Button *}
             <div class="panel-footer">
-                <button type="submit" class="btn btn-default pull-right" name="submitRlAiSettings">
-                    <i class="process-icon-save"></i> {l s='Save Settings' mod='rl_aimodulemaker'}
+                <button type="submit" class="btn btn-default pull-right" name="submitArtAiSettings">
+                    <i class="process-icon-save"></i> {l s='Save Settings' mod='art_aimodulemaker'}
                 </button>
             </div>
         </form>
@@ -195,7 +195,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">{l s='API Connection Test' mod='rl_aimodulemaker'}</h4>
+                        <h4 class="modal-title">{l s='API Connection Test' mod='art_aimodulemaker'}</h4>
                     </div>
                     <div class="modal-body">
                         <div class="api-test-result"></div>
@@ -216,7 +216,7 @@
             button.prop('disabled', true);
             
             $.ajax({
-                url: '{$link->getAdminLink('AdminRlAiSettings')|addslashes}',
+                url: '{$link->getAdminLink('AdminArtAiSettings')|addslashes}',
                 type: 'POST',
                 data: {
                     ajax: 1,

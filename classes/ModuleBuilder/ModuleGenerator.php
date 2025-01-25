@@ -29,7 +29,7 @@ class ModuleGenerator
         $this->validator = new ValidationHandler();
         
         // Välj AI handler baserat på konfiguration
-        $aiModel = Configuration::get('RLAIMODULEMAKER_DEFAULT_AI', 'openai');
+        $aiModel = Configuration::get('ARTAIMODULEMAKER_DEFAULT_AI', 'openai');
         $this->aiHandler = $aiModel === 'claude' ? new ClaudeHandler() : new OpenAiHandler();
     }
 
@@ -256,7 +256,7 @@ class ModuleGenerator
     {
         return isset($this->moduleData['create_git_repo']) && 
                $this->moduleData['create_git_repo'] === true &&
-               Configuration::get('RLAIMODULEMAKER_GITHUB_TOKEN');
+               Configuration::get('ARTAIMODULEMAKER_GITHUB_TOKEN');
     }
 
     /**

@@ -136,7 +136,7 @@ class CodeValidator
         // Check for potentially dangerous functions
         $dangerousFunctions = [
             'eval', 'exec', 'passthru', 'shell_exec', 'system',
-            'proc_open', 'popen', 'curl_exec', 'curl_multi_exec'
+            'proc_open', 'popen', 'cuart_exec', 'cuart_multi_exec'
         ];
         foreach ($dangerousFunctions as $func) {
             if (preg_match('/\b' . $func . '\s*\(/i', $content)) {

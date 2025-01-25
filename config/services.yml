@@ -5,130 +5,130 @@ services:
         autoconfigure: true
 
     # Controllers
-    PrestaShop\Module\RlAimodulemaker\Controller\Admin\:
+    PrestaShop\Module\ArtAimodulemaker\Controller\Admin\:
         resource: '../controllers/admin/*'
         exclude: '../controllers/admin/index.php'
 
-    PrestaShop\Module\RlAimodulemaker\Controller\Front\:
+    PrestaShop\Module\ArtAimodulemaker\Controller\Front\:
         resource: '../controllers/front/*'
         exclude: '../controllers/front/index.php'
         
     # Repositories
-    PrestaShop\Module\RlAimodulemaker\Repository\:
+    PrestaShop\Module\ArtAimodulemaker\Repository\:
         resource: '../classes/Database/*Repository.php'
         
     # AI Handlers
-    PrestaShop\Module\RlAimodulemaker\AiHandler\:
+    PrestaShop\Module\ArtAimodulemaker\AiHandler\:
         resource: '../classes/AiHandler/*Handler.php'
         
     # Git Handlers
-    PrestaShop\Module\RlAimodulemaker\GitHandler\:
+    PrestaShop\Module\ArtAimodulemaker\GitHandler\:
         resource: '../classes/GitHandler/*Handler.php'
         
     # Module Builder
-    PrestaShop\Module\RlAimodulemaker\ModuleBuilder\:
+    PrestaShop\Module\ArtAimodulemaker\ModuleBuilder\:
         resource: '../classes/ModuleBuilder/*.php'
 
     # Specific Services
-    prestashop.module.rl_aimodulemaker.module_builder:
-        class: PrestaShop\Module\RlAimodulemaker\ModuleBuilder\ModuleGenerator
+    prestashop.module.art_aimodulemaker.module_builder:
+        class: PrestaShop\Module\ArtAimodulemaker\ModuleBuilder\ModuleGenerator
         arguments:
-            $fileGenerator: '@prestashop.module.rl_aimodulemaker.file_generator'
-            $validator: '@prestashop.module.rl_aimodulemaker.validation_handler'
+            $fileGenerator: '@prestashop.module.art_aimodulemaker.file_generator'
+            $validator: '@prestashop.module.art_aimodulemaker.validation_handler'
             
-    prestashop.module.rl_aimodulemaker.file_generator:
-        class: PrestaShop\Module\RlAimodulemaker\ModuleBuilder\FileGenerator
+    prestashop.module.art_aimodulemaker.file_generator:
+        class: PrestaShop\Module\ArtAimodulemaker\ModuleBuilder\FileGenerator
         
-    prestashop.module.rl_aimodulemaker.validation_handler:
-        class: PrestaShop\Module\RlAimodulemaker\ModuleBuilder\ValidationHandler
+    prestashop.module.art_aimodulemaker.validation_handler:
+        class: PrestaShop\Module\ArtAimodulemaker\ModuleBuilder\ValidationHandler
         
-    prestashop.module.rl_aimodulemaker.openai_handler:
-        class: PrestaShop\Module\RlAimodulemaker\AiHandler\OpenAiHandler
+    prestashop.module.art_aimodulemaker.openai_handler:
+        class: PrestaShop\Module\ArtAimodulemaker\AiHandler\OpenAiHandler
         arguments:
-            $apiRepository: '@prestashop.module.rl_aimodulemaker.api_repository'
+            $apiRepository: '@prestashop.module.art_aimodulemaker.api_repository'
             
-    prestashop.module.rl_aimodulemaker.claude_handler:
-        class: PrestaShop\Module\RlAimodulemaker\AiHandler\ClaudeHandler
+    prestashop.module.art_aimodulemaker.claude_handler:
+        class: PrestaShop\Module\ArtAimodulemaker\AiHandler\ClaudeHandler
         arguments:
-            $apiRepository: '@prestashop.module.rl_aimodulemaker.api_repository'
+            $apiRepository: '@prestashop.module.art_aimodulemaker.api_repository'
             
-    prestashop.module.rl_aimodulemaker.github_handler:
-        class: PrestaShop\Module\RlAimodulemaker\GitHandler\GitHubHandler
+    prestashop.module.art_aimodulemaker.github_handler:
+        class: PrestaShop\Module\ArtAimodulemaker\GitHandler\GitHubHandler
         arguments:
-            $apiRepository: '@prestashop.module.rl_aimodulemaker.api_repository'
-            $moduleRepository: '@prestashop.module.rl_aimodulemaker.module_repository'
+            $apiRepository: '@prestashop.module.art_aimodulemaker.api_repository'
+            $moduleRepository: '@prestashop.module.art_aimodulemaker.module_repository'
             
     # Repositories as Services
-    prestashop.module.rl_aimodulemaker.api_repository:
-        class: PrestaShop\Module\RlAimodulemaker\Repository\ApiKeyRepository
+    prestashop.module.art_aimodulemaker.api_repository:
+        class: PrestaShop\Module\ArtAimodulemaker\Repository\ApiKeyRepository
         
-    prestashop.module.rl_aimodulemaker.module_repository:
-        class: PrestaShop\Module\RlAimodulemaker\Repository\ModuleRepository
+    prestashop.module.art_aimodulemaker.module_repository:
+        class: PrestaShop\Module\ArtAimodulemaker\Repository\ModuleRepository
         
-    prestashop.module.rl_aimodulemaker.version_repository:
-        class: PrestaShop\Module\RlAimodulemaker\Repository\VersionRepository
+    prestashop.module.art_aimodulemaker.version_repository:
+        class: PrestaShop\Module\ArtAimodulemaker\Repository\VersionRepository
 
     # Event Subscribers
-    prestashop.module.rl_aimodulemaker.module_subscriber:
-        class: PrestaShop\Module\RlAimodulemaker\Event\ModuleSubscriber
+    prestashop.module.art_aimodulemaker.module_subscriber:
+        class: PrestaShop\Module\ArtAimodulemaker\Event\ModuleSubscriber
         tags:
             - { name: kernel.event_subscriber }
             
-    prestashop.module.rl_aimodulemaker.github_subscriber:
-        class: PrestaShop\Module\RlAimodulemaker\Event\GitHubSubscriber
+    prestashop.module.art_aimodulemaker.github_subscriber:
+        class: PrestaShop\Module\ArtAimodulemaker\Event\GitHubSubscriber
         tags:
             - { name: kernel.event_subscriber }
 
     # Cache Services
-    prestashop.module.rl_aimodulemaker.cache.file_cache:
-        class: PrestaShop\Module\RlAimodulemaker\Cache\FileCache
+    prestashop.module.art_aimodulemaker.cache.file_cache:
+        class: PrestaShop\Module\ArtAimodulemaker\Cache\FileCache
         arguments:
-            $cacheDir: '%kernel.cache_dir%/rl_aimodulemaker'
+            $cacheDir: '%kernel.cache_dir%/art_aimodulemaker'
             
-    prestashop.module.rl_aimodulemaker.cache.api_cache:
-        class: PrestaShop\Module\RlAimodulemaker\Cache\ApiCache
+    prestashop.module.art_aimodulemaker.cache.api_cache:
+        class: PrestaShop\Module\ArtAimodulemaker\Cache\ApiCache
         arguments:
-            $cacheService: '@prestashop.module.rl_aimodulemaker.cache.file_cache'
+            $cacheService: '@prestashop.module.art_aimodulemaker.cache.file_cache'
             
     # Security Services
-    prestashop.module.rl_aimodulemaker.security.api_authenticator:
-        class: PrestaShop\Module\RlAimodulemaker\Security\ApiAuthenticator
+    prestashop.module.art_aimodulemaker.security.api_authenticator:
+        class: PrestaShop\Module\ArtAimodulemaker\Security\ApiAuthenticator
         arguments:
-            $apiRepository: '@prestashop.module.rl_aimodulemaker.api_repository'
+            $apiRepository: '@prestashop.module.art_aimodulemaker.api_repository'
             
-    prestashop.module.rl_aimodulemaker.security.token_generator:
-        class: PrestaShop\Module\RlAimodulemaker\Security\TokenGenerator
+    prestashop.module.art_aimodulemaker.security.token_generator:
+        class: PrestaShop\Module\ArtAimodulemaker\Security\TokenGenerator
         arguments:
             $secret: '%kernel.secret%'
 
     # Utility Services
-    prestashop.module.rl_aimodulemaker.utils.file_manager:
-        class: PrestaShop\Module\RlAimodulemaker\Utils\FileManager
+    prestashop.module.art_aimodulemaker.utils.file_manager:
+        class: PrestaShop\Module\ArtAimodulemaker\Utils\FileManager
         arguments:
-            $moduleDir: '%kernel.project_dir%/modules/rl_aimodulemaker'
+            $moduleDir: '%kernel.project_dir%/modules/art_aimodulemaker'
             
-    prestashop.module.rl_aimodulemaker.utils.code_analyzer:
-        class: PrestaShop\Module\RlAimodulemaker\Utils\CodeAnalyzer
+    prestashop.module.art_aimodulemaker.utils.code_analyzer:
+        class: PrestaShop\Module\ArtAimodulemaker\Utils\CodeAnalyzer
         
-    prestashop.module.rl_aimodulemaker.utils.template_renderer:
-        class: PrestaShop\Module\RlAimodulemaker\Utils\TemplateRenderer
+    prestashop.module.art_aimodulemaker.utils.template_renderer:
+        class: PrestaShop\Module\ArtAimodulemaker\Utils\TemplateRenderer
         arguments:
             $twig: '@twig'
 
     # Export/Import Services
-    prestashop.module.rl_aimodulemaker.export.module_exporter:
-        class: PrestaShop\Module\RlAimodulemaker\Export\ModuleExporter
+    prestashop.module.art_aimodulemaker.export.module_exporter:
+        class: PrestaShop\Module\ArtAimodulemaker\Export\ModuleExporter
         arguments:
-            $fileManager: '@prestashop.module.rl_aimodulemaker.utils.file_manager'
+            $fileManager: '@prestashop.module.art_aimodulemaker.utils.file_manager'
             
-    prestashop.module.rl_aimodulemaker.export.module_importer:
-        class: PrestaShop\Module\RlAimodulemaker\Export\ModuleImporter
+    prestashop.module.art_aimodulemaker.export.module_importer:
+        class: PrestaShop\Module\ArtAimodulemaker\Export\ModuleImporter
         arguments:
-            $fileManager: '@prestashop.module.rl_aimodulemaker.utils.file_manager'
-            $moduleRepository: '@prestashop.module.rl_aimodulemaker.module_repository'
+            $fileManager: '@prestashop.module.art_aimodulemaker.utils.file_manager'
+            $moduleRepository: '@prestashop.module.art_aimodulemaker.module_repository'
 
     # Logger Services
-    prestashop.module.rl_aimodulemaker.logger.module_logger:
-        class: PrestaShop\Module\RlAimodulemaker\Logger\ModuleLogger
+    prestashop.module.art_aimodulemaker.logger.module_logger:
+        class: PrestaShop\Module\ArtAimodulemaker\Logger\ModuleLogger
         arguments:
-            $logDir: '%kernel.logs_dir%/rl_aimodulemaker'
+            $logDir: '%kernel.logs_dir%/art_aimodulemaker'

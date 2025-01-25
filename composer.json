@@ -1,5 +1,5 @@
 {
-    "name": "ljustema/rl_aimodulemaker",
+    "name": "ljustema/art_aimodulemaker",
     "description": "Create and manage PrestaShop modules with AI assistance",
     "type": "prestashop-module",
     "license": "proprietary",
@@ -30,11 +30,11 @@
     },
     "autoload": {
         "psr-4": {
-            "PrestaShop\\Module\\RlAimodulemaker\\Controller\\Admin\\": "modules/rl_aimodulemaker/controllers/admin/",
-            "PrestaShop\\Module\\RlAimodulemaker\\": "modules/rl_aimodulemaker/src/"
+            "PrestaShop\\Module\\ArtAimodulemaker\\Controller\\Admin\\": "modules/art_aimodulemaker/controllers/admin/",
+            "PrestaShop\\Module\\ArtAimodulemaker\\": "modules/art_aimodulemaker/src/"
         },
         "classmap": [
-            "modules/rl_aimodulemaker/rl_aimodulemaker.php"
+            "modules/art_aimodulemaker/art_aimodulemaker.php"
         ]
     },
     "config": {

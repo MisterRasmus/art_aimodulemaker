@@ -4,16 +4,16 @@
  * @author Ljustema Sverige AB
  */
 
- namespace PrestaShop\Module\RlAimodulemaker\Controller\Admin;
+ namespace PrestaShop\Module\ArtAimodulemaker\Controller\Admin;
 
  use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
  
- class AdminRlAiModuleListController extends FrameworkBundleAdminController
+ class AdminArtAiModuleListController extends FrameworkBundleAdminController
  {
     public function __construct()
     {
         $this->bootstrap = true;
-        $this->table = 'rl_aimodulemaker_modules';
+        $this->table = 'art_aimodulemaker_modules';
         $this->className = 'ModuleRepository';
         $this->lang = false;
         $this->addRowAction('edit');

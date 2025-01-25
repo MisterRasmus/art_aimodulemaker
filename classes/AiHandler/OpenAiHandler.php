@@ -17,8 +17,8 @@ class OpenAiHandler implements AiHandlerInterface
 
     public function __construct()
     {
-        $this->apiKey = Configuration::get('RLAIMODULEMAKER_OPENAI_API_KEY');
-        $this->model = Configuration::get('RLAIMODULEMAKER_OPENAI_MODEL', 'gpt-4');
+        $this->apiKey = Configuration::get('ARTAIMODULEMAKER_OPENAI_API_KEY');
+        $this->model = Configuration::get('ARTAIMODULEMAKER_OPENAI_MODEL', 'gpt-4');
         
         $this->defaultHeaders = [
             'Authorization: Bearer ' . $this->apiKey,

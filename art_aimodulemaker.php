@@ -3,17 +3,17 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-require_once _PS_MODULE_DIR_ . 'rl_aimodulemaker/classes/AiHandler/AiHandlerInterface.php';
-require_once _PS_MODULE_DIR_ . 'rl_aimodulemaker/classes/GitHandler/GitHandlerInterface.php';
-require_once _PS_MODULE_DIR_ . 'rl_aimodulemaker/classes/ModuleBuilder/ModuleGenerator.php';
-require_once _PS_MODULE_DIR_ . 'rl_aimodulemaker/classes/Database/ApiKeyRepository.php';
+require_once _PS_MODULE_DIR_ . 'art_aimodulemaker/classes/AiHandler/AiHandlerInterface.php';
+require_once _PS_MODULE_DIR_ . 'art_aimodulemaker/classes/GitHandler/GitHandlerInterface.php';
+require_once _PS_MODULE_DIR_ . 'art_aimodulemaker/classes/ModuleBuilder/ModuleGenerator.php';
+require_once _PS_MODULE_DIR_ . 'art_aimodulemaker/classes/Database/ApiKeyRepository.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
-class Rl_aimodulemaker extends Module
+class Art_aimodulemaker extends Module
 {
     public function __construct()
     {
-        $this->name = 'rl_aimodulemaker';
+        $this->name = 'art_aimodulemaker';
         $this->tab = 'administration';
         $this->version = '1.0.0';
         $this->author = 'Ljustema Sverige AB';
@@ -50,22 +50,22 @@ class Rl_aimodulemaker extends Module
     {
         $tabs = [
             [
-                'class_name' => 'AdminRlAiModuleMaker',
+                'class_name' => 'AdminArtAiModuleMaker',
                 'visible' => true,
                 'name' => 'AI Module Maker',
                 'parent_class_name' => 'IMPROVE',
             ],
             [
-                'class_name' => 'AdminRlAiModuleList',
+                'class_name' => 'AdminArtAiModuleList',
                 'visible' => true,
                 'name' => 'Module List',
-                'parent_class_name' => 'AdminRlAiModuleMaker',
+                'parent_class_name' => 'AdminArtAiModuleMaker',
             ],
             [
-                'class_name' => 'AdminRlAiSettings',
+                'class_name' => 'AdminArtAiSettings',
                 'visible' => true,
                 'name' => 'Settings',
-                'parent_class_name' => 'AdminRlAiModuleMaker',
+                'parent_class_name' => 'AdminArtAiModuleMaker',
             ],
         ];
 
@@ -87,7 +87,7 @@ class Rl_aimodulemaker extends Module
 
     private function uninstallTab()
     {
-        $tabs = ['AdminRlAiModuleMaker', 'AdminRlAiModuleList', 'AdminRlAiSettings'];
+        $tabs = ['AdminArtAiModuleMaker', 'AdminArtAiModuleList', 'AdminArtAiSettings'];
         foreach ($tabs as $class_name) {
             $id_tab = (int)Tab::getIdFromClassName($class_name);
             if ($id_tab) {
@@ -103,7 +103,7 @@ class Rl_aimodulemaker extends Module
         $sql = [];
         
         // API Keys table
-        $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'rl_aimodulemaker_api_keys` (
+        $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'art_aimodulemaker_api_keys` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
             `api_type` VARCHAR(50) NOT NULL,
             `api_key` TEXT NOT NULL,
@@ -114,7 +114,7 @@ class Rl_aimodulemaker extends Module
         ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8mb4;';
 
         // Modules table
-        $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'rl_aimodulemaker_modules` (
+        $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'art_aimodulemaker_modules` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
             `name` VARCHAR(255) NOT NULL,
             `github_repo` VARCHAR(255),
@@ -127,7 +127,7 @@ class Rl_aimodulemaker extends Module
         ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8mb4;';
 
         // Version history table
-        $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'rl_aimodulemaker_version_history` (
+        $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'art_aimodulemaker_version_history` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
             `module_id` int(11) NOT NULL,
             `version` VARCHAR(50) NOT NULL,
@@ -135,7 +135,7 @@ class Rl_aimodulemaker extends Module
             `changes` TEXT,
             `date_add` DATETIME NOT NULL,
             PRIMARY KEY (`id`),
-            FOREIGN KEY (`module_id`) REFERENCES `' . _DB_PREFIX_ . 'rl_aimodulemaker_modules` (`id`)
+            FOREIGN KEY (`module_id`) REFERENCES `' . _DB_PREFIX_ . 'art_aimodulemaker_modules` (`id`)
         ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8mb4;';
 
         foreach ($sql as $query) {
@@ -150,9 +150,9 @@ class Rl_aimodulemaker extends Module
     private function dropTables()
     {
         $sql = [];
-        $sql[] = 'DROP TABLE IF EXISTS `' . _DB_PREFIX_ . 'rl_aimodulemaker_version_history`';
-        $sql[] = 'DROP TABLE IF EXISTS `' . _DB_PREFIX_ . 'rl_aimodulemaker_modules`';
-        $sql[] = 'DROP TABLE IF EXISTS `' . _DB_PREFIX_ . 'rl_aimodulemaker_api_keys`';
+        $sql[] = 'DROP TABLE IF EXISTS `' . _DB_PREFIX_ . 'art_aimodulemaker_version_history`';
+        $sql[] = 'DROP TABLE IF EXISTS `' . _DB_PREFIX_ . 'art_aimodulemaker_modules`';
+        $sql[] = 'DROP TABLE IF EXISTS `' . _DB_PREFIX_ . 'art_aimodulemaker_api_keys`';
 
         foreach ($sql as $query) {
             if (!Db::getInstance()->execute($query)) {
@@ -165,9 +165,9 @@ class Rl_aimodulemaker extends Module
 
     public function hookActionAdminControllerSetMedia()
     {
-        if ($this->context->controller->controller_name === 'AdminRlAiModuleMaker' ||
-            $this->context->controller->controller_name === 'AdminRlAiModuleList' ||
-            $this->context->controller->controller_name === 'AdminRlAiSettings') {
+        if ($this->context->controller->controller_name === 'AdminArtAiModuleMaker' ||
+            $this->context->controller->controller_name === 'AdminArtAiModuleList' ||
+            $this->context->controller->controller_name === 'AdminArtAiSettings') {
             
             $this->context->controller->addJS($this->_path.'views/js/admin.js');
             $this->context->controller->addJS($this->_path.'views/js/aiChat.js');
@@ -179,6 +179,6 @@ class Rl_aimodulemaker extends Module
 
     public function getContent()
     {
-        Tools::redirectAdmin($this->context->link->getAdminLink('AdminRlAiModuleMaker'));
+        Tools::redirectAdmin($this->context->link->getAdminLink('AdminArtAiModuleMaker'));
     }
 }

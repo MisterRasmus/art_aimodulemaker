@@ -23,9 +23,9 @@ class GitHubHandler implements GitHandlerInterface
 
     public function __construct()
     {
-        $this->token = Configuration::get('RLAIMODULEMAKER_GITHUB_TOKEN');
-        $this->username = Configuration::get('RLAIMODULEMAKER_GITHUB_USERNAME');
-        $this->organization = Configuration::get('RLAIMODULEMAKER_GITHUB_ORG');
+        $this->token = Configuration::get('ARTAIMODULEMAKER_GITHUB_TOKEN');
+        $this->username = Configuration::get('ARTAIMODULEMAKER_GITHUB_USERNAME');
+        $this->organization = Configuration::get('ARTAIMODULEMAKER_GITHUB_ORG');
         
         $this->defaultHeaders = [
             'Authorization: token ' . $this->token,

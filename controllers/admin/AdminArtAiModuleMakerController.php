@@ -3,11 +3,11 @@
  * Main controller for AI Module Maker
  * @author Ljustema Sverige AB
  */
-namespace PrestaShop\Module\RlAimodulemaker\Controller\Admin;
+namespace PrestaShop\Module\ArtAimodulemaker\Controller\Admin;
 
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
 
-class AdminRlAiModuleMakerController extends FrameworkBundleAdminController
+class AdminArtAiModuleMakerController extends FrameworkBundleAdminController
 {
     public function __construct()
     {
@@ -40,25 +40,25 @@ class AdminRlAiModuleMakerController extends FrameworkBundleAdminController
             [
                 'title' => $this->l('Create New Module'),
                 'description' => $this->l('Start creating a new PrestaShop module with AI assistance'),
-                'link' => $this->context->link->getAdminLink('AdminRlAiModuleMaker').'&action=createModule',
+                'link' => $this->context->link->getAdminLink('AdminArtAiModuleMaker').'&action=createModule',
                 'icon' => 'add_circle',
             ],
             [
                 'title' => $this->l('Import Existing Module'),
                 'description' => $this->l('Import and manage an existing module with AI and Git'),
-                'link' => $this->context->link->getAdminLink('AdminRlAiModuleMaker').'&action=importModule',
+                'link' => $this->context->link->getAdminLink('AdminArtAiModuleMaker').'&action=importModule',
                 'icon' => 'cloud_upload',
             ],
             [
                 'title' => $this->l('Module List'),
                 'description' => $this->l('View and manage your AI-powered modules'),
-                'link' => $this->context->link->getAdminLink('AdminRlAiModuleList'),
+                'link' => $this->context->link->getAdminLink('AdminArtAiModuleList'),
                 'icon' => 'list',
             ],
             [
                 'title' => $this->l('Settings'),
                 'description' => $this->l('Configure API keys and module preferences'),
-                'link' => $this->context->link->getAdminLink('AdminRlAiSettings'),
+                'link' => $this->context->link->getAdminLink('AdminArtAiSettings'),
                 'icon' => 'settings',
             ],
         ];

@@ -1,8 +1,8 @@
 <?php
-namespace PrestaShop\Module\RlAimodulemaker\Tests\Unit;
+namespace PrestaShop\Module\ArtAimodulemaker\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use PrestaShop\Module\RlAimodulemaker\ModuleBuilder\ValidationHandler;
+use PrestaShop\Module\ArtAimodulemaker\ModuleBuilder\ValidationHandler;
 
 class ModuleValidationTest extends TestCase
 {

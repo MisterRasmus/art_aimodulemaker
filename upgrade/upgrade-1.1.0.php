@@ -8,17 +8,17 @@ function upgrade_module_1_1_0($module)
     $sql = [];
 
     // Add new columns to version history table
-    $sql[] = "ALTER TABLE `" . _DB_PREFIX_ . "rl_aimodulemaker_version_history`
+    $sql[] = "ALTER TABLE `" . _DB_PREFIX_ . "art_aimodulemaker_version_history`
               ADD COLUMN `commit_message` TEXT AFTER `commit_hash`,
               ADD COLUMN `branch_name` VARCHAR(255) AFTER `commit_message`";
 
     // Add new indexes for better performance
-    $sql[] = "ALTER TABLE `" . _DB_PREFIX_ . "rl_aimodulemaker_modules`
+    $sql[] = "ALTER TABLE `" . _DB_PREFIX_ . "art_aimodulemaker_modules`
               ADD INDEX `status_index` (`status`),
               ADD INDEX `date_add_index` (`date_add`)";
 
     // Add new table for module templates
-    $sql[] = "CREATE TABLE IF NOT EXISTS `" . _DB_PREFIX_ . "rl_aimodulemaker_templates` (
+    $sql[] = "CREATE TABLE IF NOT EXISTS `" . _DB_PREFIX_ . "art_aimodulemaker_templates` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
         `name` varchar(255) NOT NULL,
         `description` text,

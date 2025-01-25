@@ -24,7 +24,7 @@ jobs:
       - name: Create release zip
         run: |
           MODULE_VERSION=${GITHUB_REF#refs/tags/v}
-          MODULE_NAME="rl_aimodulemaker"
+          MODULE_NAME="art_aimodulemaker"
           # Remove development files
           rm -rf .git .github tests phpunit.xml.dist
           # Create zip
@@ -47,8 +47,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./rl_aimodulemaker-${{ github.ref_name }}.zip
-          asset_name: rl_aimodulemaker-${{ github.ref_name }}.zip
+          asset_path: ./art_aimodulemaker-${{ github.ref_name }}.zip
+          asset_name: art_aimodulemaker-${{ github.ref_name }}.zip
           asset_content_type: application/zip
 
       - name: Deploy to PrestaShop Addons (Production)
@@ -58,6 +58,6 @@ jobs:
         run: |
           curl -X POST "https://addons.prestashop.com/api/products/upload" \
           -H "Authorization: Bearer ${PRESTASHOP_API_KEY}" \
-          -F "file=@rl_aimodulemaker-${{ github.ref_name }}.zip" \
+          -F "file=@art_aimodulemaker-${{ github.ref_name }}.zip" \
           -F "version=${{ github.ref_name }}" \
           -F "changelog=See CHANGELOG.md"

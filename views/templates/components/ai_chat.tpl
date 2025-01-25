@@ -3,7 +3,7 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-6">
-                    <i class="icon icon-comments"></i> {l s='AI Assistant' mod='rl_aimodulemaker'}
+                    <i class="icon icon-comments"></i> {l s='AI Assistant' mod='art_aimodulemaker'}
                 </div>
                 <div class="col-md-6 text-right">
                     <select class="ai-model-selector form-control-inline">
@@ -24,14 +24,14 @@
                             <i class="icon icon-robot"></i> AI Assistant
                         </div>
                         <div class="message-text">
-                            {l s='Hello! I\'m your AI assistant. I can help you with:' mod='rl_aimodulemaker'}
+                            {l s='Hello! I\'m your AI assistant. I can help you with:' mod='art_aimodulemaker'}
                             <ul>
-                                <li>{l s='Creating new module features' mod='rl_aimodulemaker'}</li>
-                                <li>{l s='Understanding existing code' mod='rl_aimodulemaker'}</li>
-                                <li>{l s='Debugging issues' mod='rl_aimodulemaker'}</li>
-                                <li>{l s='Suggesting improvements' mod='rl_aimodulemaker'}</li>
+                                <li>{l s='Creating new module features' mod='art_aimodulemaker'}</li>
+                                <li>{l s='Understanding existing code' mod='art_aimodulemaker'}</li>
+                                <li>{l s='Debugging issues' mod='art_aimodulemaker'}</li>
+                                <li>{l s='Suggesting improvements' mod='art_aimodulemaker'}</li>
                             </ul>
-                            {l s='How can I assist you today?' mod='rl_aimodulemaker'}
+                            {l s='How can I assist you today?' mod='art_aimodulemaker'}
                         </div>
                     </div>
                 </div>
@@ -41,23 +41,23 @@
                 <div class="input-group">
                     <input type="text" 
                            class="form-control message-input" 
-                           placeholder="{l s='Type your message here...' mod='rl_aimodulemaker'}"
+                           placeholder="{l s='Type your message here...' mod='art_aimodulemaker'}"
                            data-context="{$chat_context|escape:'html':'UTF-8'}">
                     <span class="input-group-btn">
                         <button class="btn btn-primary send-message" type="button">
-                            <i class="icon icon-paper-plane"></i> {l s='Send' mod='rl_aimodulemaker'}
+                            <i class="icon icon-paper-plane"></i> {l s='Send' mod='art_aimodulemaker'}
                         </button>
                     </span>
                 </div>
                 <div class="chat-actions margin-top-1">
                     <button class="btn btn-default btn-xs show-context" type="button">
-                        <i class="icon icon-code"></i> {l s='Show Context' mod='rl_aimodulemaker'}
+                        <i class="icon icon-code"></i> {l s='Show Context' mod='art_aimodulemaker'}
                     </button>
                     <button class="btn btn-default btn-xs clear-chat" type="button">
-                        <i class="icon icon-trash"></i> {l s='Clear Chat' mod='rl_aimodulemaker'}
+                        <i class="icon icon-trash"></i> {l s='Clear Chat' mod='art_aimodulemaker'}
                     </button>
                     <button class="btn btn-default btn-xs export-chat" type="button">
-                        <i class="icon icon-download"></i> {l s='Export Chat' mod='rl_aimodulemaker'}
+                        <i class="icon icon-download"></i> {l s='Export Chat' mod='art_aimodulemaker'}
                     </button>
                 </div>
             </div>
@@ -70,7 +70,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{l s='Current Context' mod='rl_aimodulemaker'}</h4>
+                    <h4 class="modal-title">{l s='Current Context' mod='art_aimodulemaker'}</h4>
                 </div>
                 <div class="modal-body">
                     <pre class="context-content"></pre>
@@ -316,9 +316,9 @@
     $(document).ready(function() {
         $('.ai-chat-component').each(function() {
             new AiChatComponent($(this), {
-                ajaxUrl: '{$link->getAdminLink('AdminRlAiModuleMaker')|addslashes}',
+                ajaxUrl: '{$link->getAdminLink('AdminArtAiModuleMaker')|addslashes}',
                 translations: {
-                    confirmClear: '{l s='Are you sure you want to clear the chat history?' mod='rl_aimodulemaker' js=1}'
+                    confirmClear: '{l s='Are you sure you want to clear the chat history?' mod='art_aimodulemaker' js=1}'
                 }
             });
         });

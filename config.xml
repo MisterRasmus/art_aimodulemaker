@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
-    <name>rl_aimodulemaker</name>
+    <name>art_aimodulemaker</name>
     <displayName><![CDATA[AI Module Maker]]></displayName>
     <version><![CDATA[1.0.0]]></version>
     <description><![CDATA[Create and manage PrestaShop modules with AI assistance]]></description>

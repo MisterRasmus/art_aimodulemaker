@@ -3,11 +3,11 @@
  * Controller for managing AI Module Maker settings
  * @author Ljustema Sverige AB
  */
-namespace PrestaShop\Module\RlAimodulemaker\Controller\Admin;
+namespace PrestaShop\Module\ArtAimodulemaker\Controller\Admin;
 
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
 
-class AdminRlAiSettingsController extends FrameworkBundleAdminController
+class AdminArtAiSettingsController extends FrameworkBundleAdminController
 {
     public function __construct()
     {
@@ -50,9 +50,9 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
         $helper->allow_employee_form_lang = Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG', 0);
 
         $helper->identifier = $this->identifier;
-        $helper->submit_action = 'submitRlAiSettings';
-        $helper->currentIndex = $this->context->link->getAdminLink('AdminRlAiSettings');
-        $helper->token = Tools::getAdminTokenLite('AdminRlAiSettings');
+        $helper->submit_action = 'submitArtAiSettings';
+        $helper->currentIndex = $this->context->link->getAdminLink('AdminArtAiSettings');
+        $helper->token = Tools::getAdminTokenLite('AdminArtAiSettings');
 
         $helper->tpl_vars = [
             'fields_value' => $this->getConfigFormValues(),
@@ -82,7 +82,7 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
                         'tab' => 'api',
                         'type' => 'text',
                         'prefix' => '<i class="icon icon-key"></i>',
-                        'name' => 'RLAIMODULEMAKER_OPENAI_API_KEY',
+                        'name' => 'ARTAIMODULEMAKER_OPENAI_API_KEY',
                         'label' => $this->l('OpenAI API Key'),
                         'desc' => $this->l('Enter your OpenAI API key'),
                         'class' => 'fixed-width-xxl',
@@ -91,7 +91,7 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
                     [
                         'tab' => 'api',
                         'type' => 'select',
-                        'name' => 'RLAIMODULEMAKER_OPENAI_MODEL',
+                        'name' => 'ARTAIMODULEMAKER_OPENAI_MODEL',
                         'label' => $this->l('OpenAI Model'),
                         'options' => [
                             'query' => [
@@ -106,7 +106,7 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
                         'tab' => 'api',
                         'type' => 'text',
                         'prefix' => '<i class="icon icon-key"></i>',
-                        'name' => 'RLAIMODULEMAKER_CLAUDE_API_KEY',
+                        'name' => 'ARTAIMODULEMAKER_CLAUDE_API_KEY',
                         'label' => $this->l('Claude API Key'),
                         'desc' => $this->l('Enter your Anthropic Claude API key'),
                         'class' => 'fixed-width-xxl',
@@ -114,7 +114,7 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
                     [
                         'tab' => 'api',
                         'type' => 'select',
-                        'name' => 'RLAIMODULEMAKER_CLAUDE_MODEL',
+                        'name' => 'ARTAIMODULEMAKER_CLAUDE_MODEL',
                         'label' => $this->l('Claude Model'),
                         'options' => [
                             'query' => [
@@ -131,7 +131,7 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
                         'tab' => 'github',
                         'type' => 'text',
                         'prefix' => '<i class="icon icon-github"></i>',
-                        'name' => 'RLAIMODULEMAKER_GITHUB_TOKEN',
+                        'name' => 'ARTAIMODULEMAKER_GITHUB_TOKEN',
                         'label' => $this->l('GitHub Personal Access Token'),
                         'desc' => $this->l('Enter your GitHub personal access token'),
                         'class' => 'fixed-width-xxl',
@@ -139,14 +139,14 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
                     [
                         'tab' => 'github',
                         'type' => 'text',
-                        'name' => 'RLAIMODULEMAKER_GITHUB_USERNAME',
+                        'name' => 'ARTAIMODULEMAKER_GITHUB_USERNAME',
                         'label' => $this->l('GitHub Username'),
                         'desc' => $this->l('Your GitHub username for repository creation'),
                     ],
                     [
                         'tab' => 'github',
                         'type' => 'text',
-                        'name' => 'RLAIMODULEMAKER_GITHUB_ORG',
+                        'name' => 'ARTAIMODULEMAKER_GITHUB_ORG',
                         'label' => $this->l('GitHub Organization'),
                         'desc' => $this->l('Optional: GitHub organization name'),
                     ],
@@ -155,7 +155,7 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
                     [
                         'tab' => 'general',
                         'type' => 'switch',
-                        'name' => 'RLAIMODULEMAKER_AUTO_COMMIT',
+                        'name' => 'ARTAIMODULEMAKER_AUTO_COMMIT',
                         'label' => $this->l('Auto Commit Changes'),
                         'desc' => $this->l('Automatically commit changes to GitHub'),
                         'values' => [
@@ -174,7 +174,7 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
                     [
                         'tab' => 'general',
                         'type' => 'text',
-                        'name' => 'RLAIMODULEMAKER_DEFAULT_AUTHOR',
+                        'name' => 'ARTAIMODULEMAKER_DEFAULT_AUTHOR',
                         'label' => $this->l('Default Module Author'),
                         'desc' => $this->l('Default author name for new modules'),
                         'value' => 'Ljustema Sverige AB'
@@ -191,15 +191,15 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
     protected function getConfigFormValues()
     {
         $fields = [
-            'RLAIMODULEMAKER_OPENAI_API_KEY' => Configuration::get('RLAIMODULEMAKER_OPENAI_API_KEY'),
-            'RLAIMODULEMAKER_OPENAI_MODEL' => Configuration::get('RLAIMODULEMAKER_OPENAI_MODEL', 'gpt-4'),
-            'RLAIMODULEMAKER_CLAUDE_API_KEY' => Configuration::get('RLAIMODULEMAKER_CLAUDE_API_KEY'),
-            'RLAIMODULEMAKER_CLAUDE_MODEL' => Configuration::get('RLAIMODULEMAKER_CLAUDE_MODEL', 'claude-3-opus-20240229'),
-            'RLAIMODULEMAKER_GITHUB_TOKEN' => Configuration::get('RLAIMODULEMAKER_GITHUB_TOKEN'),
-            'RLAIMODULEMAKER_GITHUB_USERNAME' => Configuration::get('RLAIMODULEMAKER_GITHUB_USERNAME'),
-            'RLAIMODULEMAKER_GITHUB_ORG' => Configuration::get('RLAIMODULEMAKER_GITHUB_ORG'),
-            'RLAIMODULEMAKER_AUTO_COMMIT' => Configuration::get('RLAIMODULEMAKER_AUTO_COMMIT', 1),
-            'RLAIMODULEMAKER_DEFAULT_AUTHOR' => Configuration::get('RLAIMODULEMAKER_DEFAULT_AUTHOR', 'Ljustema Sverige AB'),
+            'ARTAIMODULEMAKER_OPENAI_API_KEY' => Configuration::get('ARTAIMODULEMAKER_OPENAI_API_KEY'),
+            'ARTAIMODULEMAKER_OPENAI_MODEL' => Configuration::get('ARTAIMODULEMAKER_OPENAI_MODEL', 'gpt-4'),
+            'ARTAIMODULEMAKER_CLAUDE_API_KEY' => Configuration::get('ARTAIMODULEMAKER_CLAUDE_API_KEY'),
+            'ARTAIMODULEMAKER_CLAUDE_MODEL' => Configuration::get('ARTAIMODULEMAKER_CLAUDE_MODEL', 'claude-3-opus-20240229'),
+            'ARTAIMODULEMAKER_GITHUB_TOKEN' => Configuration::get('ARTAIMODULEMAKER_GITHUB_TOKEN'),
+            'ARTAIMODULEMAKER_GITHUB_USERNAME' => Configuration::get('ARTAIMODULEMAKER_GITHUB_USERNAME'),
+            'ARTAIMODULEMAKER_GITHUB_ORG' => Configuration::get('ARTAIMODULEMAKER_GITHUB_ORG'),
+            'ARTAIMODULEMAKER_AUTO_COMMIT' => Configuration::get('ARTAIMODULEMAKER_AUTO_COMMIT', 1),
+            'ARTAIMODULEMAKER_DEFAULT_AUTHOR' => Configuration::get('ARTAIMODULEMAKER_DEFAULT_AUTHOR', 'Ljustema Sverige AB'),
         ];
 
         return $fields;
@@ -207,7 +207,7 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
 
     public function postProcess()
     {
-        if (Tools::isSubmit('submitRlAiSettings')) {
+        if (Tools::isSubmit('submitArtAiSettings')) {
             $this->processConfiguration();
         }
 
@@ -229,15 +229,15 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
         // Uppdatera API nycklar säkert
         $apiRepository = new ApiKeyRepository();
         
-        if ($openaiKey = Tools::getValue('RLAIMODULEMAKER_OPENAI_API_KEY')) {
+        if ($openaiKey = Tools::getValue('ARTAIMODULEMAKER_OPENAI_API_KEY')) {
             $apiRepository->updateApiKey('openai', $openaiKey);
         }
         
-        if ($claudeKey = Tools::getValue('RLAIMODULEMAKER_CLAUDE_API_KEY')) {
+        if ($claudeKey = Tools::getValue('ARTAIMODULEMAKER_CLAUDE_API_KEY')) {
             $apiRepository->updateApiKey('claude', $claudeKey);
         }
         
-        if ($githubToken = Tools::getValue('RLAIMODULEMAKER_GITHUB_TOKEN')) {
+        if ($githubToken = Tools::getValue('ARTAIMODULEMAKER_GITHUB_TOKEN')) {
             $apiRepository->updateApiKey('github', $githubToken);
         }
 
@@ -284,8 +284,8 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
         foreach (['openai', 'claude', 'github'] as $api) {
             $results[$api] = [
                 'configured' => $apiRepository->isConfigured($api),
-                'lastTest' => Configuration::get('RLAIMODULEMAKER_' . strtoupper($api) . '_LAST_TEST'),
-                'status' => Configuration::get('RLAIMODULEMAKER_' . strtoupper($api) . '_STATUS')
+                'lastTest' => Configuration::get('ARTAIMODULEMAKER_' . strtoupper($api) . '_LAST_TEST'),
+                'status' => Configuration::get('ARTAIMODULEMAKER_' . strtoupper($api) . '_STATUS')
             ];
         }
 
@@ -294,8 +294,8 @@ class AdminRlAiSettingsController extends FrameworkBundleAdminController
 
     protected function getDefaultGitHubRepoPath()
     {
-        $username = Configuration::get('RLAIMODULEMAKER_GITHUB_USERNAME');
-        $org = Configuration::get('RLAIMODULEMAKER_GITHUB_ORG');
+        $username = Configuration::get('ARTAIMODULEMAKER_GITHUB_USERNAME');
+        $org = Configuration::get('ARTAIMODULEMAKER_GITHUB_ORG');
         
         return ($org ? $org : $username) . '/prestashop-modules';
     }

@@ -1,6 +1,6 @@
 # Main configuration for AI Module Maker
 module:
-    name: rl_aimodulemaker
+    name: art_aimodulemaker
     display_name: AI Module Maker
     version: 1.0.0
     author: Ljustema Sverige AB

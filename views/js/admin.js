@@ -3,7 +3,7 @@
  * @author Ljustema Sverige AB
  */
 
-class RlAiModuleMakerAdmin {
+class ArtAiModuleMakerAdmin {
     constructor() {
         this.initializeComponents();
         this.bindEvents();
@@ -338,5 +338,5 @@ class RlAiModuleMakerAdmin {
 
 // Initialisera när dokumentet är klart
 $(document).ready(() => {
-    window.RlAiModuleMaker = new RlAiModuleMakerAdmin();
+    window.ArtAiModuleMaker = new ArtAiModuleMakerAdmin();
 });

@@ -3,18 +3,18 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-6">
-                    <i class="icon icon-folder-open"></i> {l s='Module Files' mod='rl_aimodulemaker'}
+                    <i class="icon icon-folder-open"></i> {l s='Module Files' mod='art_aimodulemaker'}
                 </div>
                 <div class="col-md-6 text-right">
                     <div class="btn-group">
                         <button class="btn btn-default btn-xs refresh-files">
-                            <i class="icon icon-refresh"></i> {l s='Refresh' mod='rl_aimodulemaker'}
+                            <i class="icon icon-refresh"></i> {l s='Refresh' mod='art_aimodulemaker'}
                         </button>
                         <button class="btn btn-default btn-xs create-file">
-                            <i class="icon icon-plus"></i> {l s='New File' mod='rl_aimodulemaker'}
+                            <i class="icon icon-plus"></i> {l s='New File' mod='art_aimodulemaker'}
                         </button>
                         <button class="btn btn-default btn-xs create-folder">
-                            <i class="icon icon-folder"></i> {l s='New Folder' mod='rl_aimodulemaker'}
+                            <i class="icon icon-folder"></i> {l s='New Folder' mod='art_aimodulemaker'}
                         </button>
                     </div>
                 </div>
@@ -34,16 +34,16 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{l s='Create New Item' mod='rl_aimodulemaker'}</h4>
+                    <h4 class="modal-title">{l s='Create New Item' mod='art_aimodulemaker'}</h4>
                 </div>
                 <div class="modal-body">
                     <form id="create-item-form">
                         <div class="form-group">
-                            <label>{l s='Name' mod='rl_aimodulemaker'}</label>
+                            <label>{l s='Name' mod='art_aimodulemaker'}</label>
                             <input type="text" class="form-control" name="item_name" required>
                         </div>
                         <div class="form-group file-content-group" style="display: none;">
-                            <label>{l s='Initial Content' mod='rl_aimodulemaker'}</label>
+                            <label>{l s='Initial Content' mod='art_aimodulemaker'}</label>
                             <textarea class="form-control" name="item_content" rows="10"></textarea>
                         </div>
                         <input type="hidden" name="item_type">
@@ -51,8 +51,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{l s='Cancel' mod='rl_aimodulemaker'}</button>
-                    <button type="button" class="btn btn-primary" id="create-item-submit">{l s='Create' mod='rl_aimodulemaker'}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{l s='Cancel' mod='art_aimodulemaker'}</button>
+                    <button type="button" class="btn btn-primary" id="create-item-submit">{l s='Create' mod='art_aimodulemaker'}</button>
                 </div>
             </div>
         </div>
@@ -74,11 +74,11 @@
                 <div class="modal-footer">
                     <div class="pull-left">
                         <button type="button" class="btn btn-default ask-ai">
-                            <i class="icon icon-comments"></i> {l s='Ask AI' mod='rl_aimodulemaker'}
+                            <i class="icon icon-comments"></i> {l s='Ask AI' mod='art_aimodulemaker'}
                         </button>
                     </div>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{l s='Cancel' mod='rl_aimodulemaker'}</button>
-                    <button type="button" class="btn btn-primary save-file">{l s='Save' mod='rl_aimodulemaker'}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{l s='Cancel' mod='art_aimodulemaker'}</button>
+                    <button type="button" class="btn btn-primary save-file">{l s='Save' mod='art_aimodulemaker'}</button>
                 </div>
             </div>
         </div>
@@ -349,13 +349,13 @@
     $(document).ready(function() {
         $('.file-explorer-component').each(function() {
             new FileExplorerComponent($(this), {
-                ajaxUrl: '{$link->getAdminLink('AdminRlAiModuleMaker')|addslashes}',
+                ajaxUrl: '{$link->getAdminLink('AdminArtAiModuleMaker')|addslashes}',
                 moduleId: '{$module_id|intval}',
                 translations: {
-                    fileSaved: '{l s='File saved successfully' mod='rl_aimodulemaker' js=1}',
-                    itemCreated: '{l s='Item created successfully' mod='rl_aimodulemaker' js=1}',
-                    newFile: '{l s='Create New File' mod='rl_aimodulemaker' js=1}',
-                    newFolder: '{l s='Create New Folder' mod='rl_aimodulemaker' js=1}'
+                    fileSaved: '{l s='File saved successfully' mod='art_aimodulemaker' js=1}',
+                    itemCreated: '{l s='Item created successfully' mod='art_aimodulemaker' js=1}',
+                    newFile: '{l s='Create New File' mod='art_aimodulemaker' js=1}',
+                    newFolder: '{l s='Create New Folder' mod='art_aimodulemaker' js=1}'
                 }
             });
         });

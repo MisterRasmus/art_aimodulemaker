@@ -17,8 +17,8 @@ class ClaudeHandler implements AiHandlerInterface
 
     public function __construct()
     {
-        $this->apiKey = Configuration::get('RLAIMODULEMAKER_CLAUDE_API_KEY');
-        $this->model = Configuration::get('RLAIMODULEMAKER_CLAUDE_MODEL', 'claude-3-opus-20240229');
+        $this->apiKey = Configuration::get('ARTAIMODULEMAKER_CLAUDE_API_KEY');
+        $this->model = Configuration::get('ARTAIMODULEMAKER_CLAUDE_MODEL', 'claude-3-opus-20240229');
         
         $this->defaultHeaders = [
             'x-api-key: ' . $this->apiKey,
