@@ -30,11 +30,11 @@
     },
     "autoload": {
         "psr-4": {
-            "PrestaShop\\Module\\ArtAimodulemaker\\Controller\\Admin\\": "modules/art_aimodulemaker/controllers/admin/",
-            "PrestaShop\\Module\\ArtAimodulemaker\\": "modules/art_aimodulemaker/src/"
+            "PrestaShop\\Module\\ArtAimodulemaker\\": "classes/",
+            "PrestaShop\\Module\\ArtAimodulemaker\\Controller\\": "controllers/"
         },
         "classmap": [
-            "modules/art_aimodulemaker/art_aimodulemaker.php"
+            "art_aimodulemaker.php"
         ]
     },
     "config": {

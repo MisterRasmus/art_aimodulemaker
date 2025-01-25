@@ -3,10 +3,6 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-require_once _PS_MODULE_DIR_ . 'art_aimodulemaker/classes/AiHandler/AiHandlerInterface.php';
-require_once _PS_MODULE_DIR_ . 'art_aimodulemaker/classes/GitHandler/GitHandlerInterface.php';
-require_once _PS_MODULE_DIR_ . 'art_aimodulemaker/classes/ModuleBuilder/ModuleGenerator.php';
-require_once _PS_MODULE_DIR_ . 'art_aimodulemaker/classes/Database/ApiKeyRepository.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 class Art_aimodulemaker extends Module

@@ -4,10 +4,12 @@
  * @author Ljustema Sverige AB
  */
 
+ namespace PrestaShop\Module\ArtAimodulemaker\Database;
+
 class ApiKeyRepository
 {
     private const ENCRYPTION_KEY = _COOKIE_KEY_; // Använder PrestaShops cookie-nyckel för kryptering
-    private const TABLE_NAME = 'rl_aimodulemaker_api_keys';
+    private const TABLE_NAME = 'art_aimodulemaker_api_keys';
 
     /**
      * Hämta en API-nyckel

@@ -5,18 +5,22 @@
  */
 namespace PrestaShop\Module\ArtAimodulemaker\Controller\Admin;
 
+use PrestaShop\Module\ArtAimodulemaker\Database\ApiKeyRepository;
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
 
 class AdminArtAiSettingsController extends FrameworkBundleAdminController
 {
-    public function __construct()
+    private $apiKeyRepository;
+
+    public function __construct(ApiKeyRepository $apiKeyRepository)
     {
         $this->bootstrap = true;
         $this->className = 'Configuration';
         $this->table = 'configuration';
-
+        $this->apiKeyRepository = $apiKeyRepository;
+    
         parent::__construct();
-
+    
         $this->toolbar_title = $this->l('AI Module Maker Settings');
     }
 
@@ -26,7 +30,7 @@ class AdminArtAiSettingsController extends FrameworkBundleAdminController
 
         // Hämta aktuella inställningar
         $apiRepository = new ApiKeyRepository();
-        $currentSettings = $apiRepository->getAllApiKeys();
+        $currentSettings = $this->apiKeyRepository->getAllApiKeys();
 
         $this->context->smarty->assign([
             'settingsForm' => $this->renderSettingsForm(),

@@ -6,6 +6,7 @@
 
  namespace PrestaShop\Module\ArtAimodulemaker\Controller\Admin;
 
+ use PrestaShop\Module\ArtAimodulemaker\Database\ModuleRepository;
  use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
  
  class AdminArtAiModuleListController extends FrameworkBundleAdminController

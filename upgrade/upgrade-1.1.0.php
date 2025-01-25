@@ -38,9 +38,9 @@ function upgrade_module_1_1_0($module)
     }
 
     // Update configuration values
-    $result &= Configuration::updateValue('RLAIMODULEMAKER_DEFAULT_AUTHOR', 'Ljustema Sverige AB');
-    $result &= Configuration::updateValue('RLAIMODULEMAKER_AUTO_COMMIT', true);
-    $result &= Configuration::updateValue('RLAIMODULEMAKER_ENABLE_CACHING', true);
+    $result &= Configuration::updateValue('ARTAIMODULEMAKER_DEFAULT_AUTHOR', 'Ljustema Sverige AB');
+    $result &= Configuration::updateValue('ARTAIMODULEMAKER_AUTO_COMMIT', true);
+    $result &= Configuration::updateValue('ARTAIMODULEMAKER_ENABLE_CACHING', true);
 
     // Register new hooks
     $result &= $module->registerHook('actionModuleRegisterHookAfter');

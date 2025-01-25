@@ -4,6 +4,8 @@
  * @author Ljustema Sverige AB
  */
 
+namespace PrestaShop\Module\ArtAimodulemaker\AiHandler;
+
 class ClaudeHandler implements AiHandlerInterface
 {
     /** @var string */

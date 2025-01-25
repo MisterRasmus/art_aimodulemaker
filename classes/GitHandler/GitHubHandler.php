@@ -4,6 +4,10 @@
  * @author Ljustema Sverige AB
  */
 
+namespace PrestaShop\Module\ArtAimodulemaker\GitHandler;
+// Lägg till överst i filen
+use PrestaShop\Module\ArtAimodulemaker\Database\ModuleRepository;
+
 class GitHubHandler implements GitHandlerInterface
 {
     /** @var string */

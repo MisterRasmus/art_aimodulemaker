@@ -5,18 +5,26 @@
  */
 namespace PrestaShop\Module\ArtAimodulemaker\Controller\Admin;
 
+use PrestaShop\Module\ArtAimodulemaker\AiHandler\ClaudeHandler;
+use PrestaShop\Module\ArtAimodulemaker\AiHandler\OpenAiHandler;
+use PrestaShop\Module\ArtAimodulemaker\Database\ApiKeyRepository;
+
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
 
 class AdminArtAiModuleMakerController extends FrameworkBundleAdminController
 {
-    public function __construct()
+    private $apiKeyRepository;
+    private $moduleBuilder;
+    
+    public function __construct(ApiKeyRepository $apiKeyRepository)
     {
         $this->bootstrap = true;
         $this->className = 'Configuration';
         $this->table = 'configuration';
-
+        $this->apiKeyRepository = $apiKeyRepository;
+    
         parent::__construct();
-
+    
         $this->toolbar_title = $this->l('AI Module Maker');
     }
 

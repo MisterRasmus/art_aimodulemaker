@@ -4,9 +4,11 @@
  * @author Ljustema Sverige AB
  */
 
+namespace PrestaShop\Module\ArtAimodulemaker\Database;
+
 class VersionRepository
 {
-    private const TABLE_NAME = 'rl_aimodulemaker_version_history';
+    private const TABLE_NAME = 'art_aimodulemaker_version_history';
 
     /**
      * Lägg till en ny version

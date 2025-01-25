@@ -4,7 +4,14 @@
  * @author Ljustema Sverige AB
  */
 
-class Rl_aimodulemakerApiModuleFrontController extends ModuleFrontController
+namespace PrestaShop\Module\ArtAimodulemaker\Controller\Front;
+
+use PrestaShop\Module\ArtAimodulemaker\AiHandler\ClaudeHandler;
+use PrestaShop\Module\ArtAimodulemaker\AiHandler\OpenAiHandler;
+use PrestaShop\Module\ArtAimodulemaker\Database\ApiKeyRepository;
+use PrestaShop\Module\ArtAimodulemaker\Database\ModuleRepository;
+
+class ArtAimodulemakerApiModuleFrontController extends ModuleFrontController
 {
     /** @var bool */
     public $ajax = true;
