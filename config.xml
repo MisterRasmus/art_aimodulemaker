@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>rl_aimodulemaker</name>
+    <displayName><![CDATA[AI Module Maker]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Create and manage PrestaShop modules with AI assistance]]></description>
+    <author><![CDATA[Ljustema Sverige AB]]></author>
+    <tab><![CDATA[administration]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>1</need_instance>
+    <limited_countries></limited_countries>
+</module>

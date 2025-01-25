@@ -1,0 +1,166 @@
+# Main configuration for AI Module Maker
+module:
+    name: rl_aimodulemaker
+    display_name: AI Module Maker
+    version: 1.0.0
+    author: Ljustema Sverige AB
+    compatibility:
+        min_prestashop: '1.7.0.0'
+        max_prestashop: _PS_VERSION_
+        php_version: '7.2.0'
+
+# AI Configuration
+ai:
+    openai:
+        models:
+            - name: gpt-4
+              display_name: GPT-4 (Most Capable)
+              max_tokens: 4000
+            - name: gpt-3.5-turbo
+              display_name: GPT-3.5 Turbo (Faster)
+              max_tokens: 4000
+        default_model: gpt-4
+        temperature: 0.7
+        max_history: 10
+        
+    claude:
+        models:
+            - name: claude-3-opus-20240229
+              display_name: Claude-3 Opus (Most Capable)
+              max_tokens: 4000
+            - name: claude-3-sonnet-20240229
+              display_name: Claude-3 Sonnet (Balanced)
+              max_tokens: 4000
+        default_model: claude-3-opus-20240229
+        temperature: 0.7
+        max_history: 10
+
+# GitHub Configuration
+github:
+    default_visibility: private
+    auto_init: true
+    gitignore_template: prestashop
+    required_files:
+        - README.md
+        - LICENSE
+        - config.xml
+    branch_protection:
+        required_reviews: 1
+        required_status_checks: true
+
+# Module Templates
+templates:
+    module_types:
+        payment:
+            name: Payment Module
+            files:
+                - controllers/front/payment.php
+                - controllers/front/validation.php
+                - views/templates/front/payment.tpl
+                - views/templates/hook/payment.tpl
+            hooks:
+                - displayPayment
+                - displayPaymentReturn
+                - displayAdminOrder
+                
+        shipping:
+            name: Shipping Module
+            files:
+                - controllers/front/carrier.php
+                - classes/ShippingCalculator.php
+                - views/templates/front/carrier.tpl
+            hooks:
+                - displayCarrierList
+                - actionCarrierProcess
+                
+        analytics:
+            name: Analytics Module
+            files:
+                - classes/AnalyticsTracker.php
+                - views/js/tracking.js
+            hooks:
+                - displayHeader
+                - displayFooter
+                - actionOrderStatusUpdate
+                
+        marketplace:
+            name: Marketplace Module
+            files:
+                - controllers/front/seller.php
+                - classes/MarketplaceManager.php
+                - views/templates/front/seller.tpl
+            hooks:
+                - displayCustomerAccount
+                - displayMyAccountBlock
+                
+        seo:
+            name: SEO Module
+            files:
+                - classes/SeoOptimizer.php
+                - views/js/seo.js
+            hooks:
+                - displayHeader
+                - actionMetaPageSave
+
+# Code Editor Settings
+editor:
+    theme: default
+    tab_size: 4
+    line_numbers: true
+    auto_complete: true
+    supported_languages:
+        - php
+        - javascript
+        - css
+        - smarty
+        - xml
+        - json
+        - markdown
+    file_types:
+        php:
+            extensions: [php]
+            mode: application/x-httpd-php
+        javascript:
+            extensions: [js]
+            mode: text/javascript
+        css:
+            extensions: [css]
+            mode: text/css
+        smarty:
+            extensions: [tpl]
+            mode: text/x-smarty
+        xml:
+            extensions: [xml]
+            mode: application/xml
+        json:
+            extensions: [json]
+            mode: application/json
+        markdown:
+            extensions: [md, markdown]
+            mode: text/x-markdown
+
+# Security Settings
+security:
+    encryption_key: _COOKIE_KEY_
+    allowed_ips: []
+    api_rate_limit: 100
+    max_file_size: 10485760  # 10MB
+    allowed_file_types:
+        - php
+        - js
+        - css
+        - tpl
+        - xml
+        - json
+        - md
+        - txt
+        - jpg
+        - png
+        - gif
+        - svg
+    blocked_file_types:
+        - exe
+        - sh
+        - bat
+        - dll
+        - so

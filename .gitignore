@@ -1,0 +1,51 @@
+# Composer
+/vendor/
+composer.lock
+
+# Node modules
+/node_modules/
+package-lock.json
+
+# Cache and logs
+/cache/*
+/logs/*
+*.log
+*.cache
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+.DS_Store
+
+# Build files
+/build/
+/dist/
+
+# Testing
+/coverage/
+.phpunit.result.cache
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# PrestaShop specific
+config_*.xml
+*.zip
+/modules/
+
+# Project specific
+/exports/
+/uploads/
+/cache/
+/temp/
+
+# API Keys and sensitive data
+*.pem
+*.key
+credentials.json

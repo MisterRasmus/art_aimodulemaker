@@ -1,0 +1,72 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: ["Release"]
+    types:
+      - completed
+
+jobs:
+  deploy-staging:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download release artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: release.yml
+          workflow_conclusion: success
+
+      - name: Deploy to staging
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTP_SERVER_STAGING }}
+          username: ${{ secrets.FTP_USERNAME_STAGING }}
+          password: ${{ secrets.FTP_PASSWORD_STAGING }}
+          server-dir: modules/rl_aimodulemaker/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/tests/**
+            **/docs/**
+
+  deploy-production:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download release artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: release.yml
+          workflow_conclusion: success
+
+      - name: Deploy to production
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTP_SERVER_PRODUCTION }}
+          username: ${{ secrets.FTP_USERNAME_PRODUCTION }}
+          password: ${{ secrets.FTP_PASSWORD_PRODUCTION }}
+          server-dir: modules/rl_aimodulemaker/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/tests/**
+            **/docs/**
+
+  notify:
+    needs: [deploy-staging, deploy-production]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

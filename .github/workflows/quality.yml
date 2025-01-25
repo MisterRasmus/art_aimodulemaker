@@ -1,0 +1,61 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: phpcs, phpstan, php-cs-fixer
+
+      - name: Check PHP Version
+        run: php -v
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run PHPCS
+        run: phpcs --standard=PSR2 classes/ controllers/
+
+      - name: Run PHPStan
+        run: phpstan analyse -l 5 classes/ controllers/
+
+      - name: Run PHP CS Fixer
+        run: php-cs-fixer fix --dry-run --diff
+
+      - name: Check file permissions
+        run: |
+          find . -type f -name "*.php" -exec chmod 644 {} \;
+          find . -type d -exec chmod 755 {} \;
+
+      - name: Check for merge conflicts
+        run: |
+          if grep -r "^<<<<<<< HEAD" .; then
+            echo "Merge conflicts found"
+            exit 1
+          fi
+
+      - name: Security check dependencies
+        run: composer audit
+
+      - name: Validate Smarty templates
+        run: |
+          for file in $(find ./views/templates -name "*.tpl"); do
+            php -l "$file"
+          done
+
+      - name: Check JavaScript files
+        if: hashFiles('package.json')
+        run: |
+          npm install
+          npm run lint

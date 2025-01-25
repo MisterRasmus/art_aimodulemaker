@@ -1,0 +1,214 @@
+/* Main Layout */
+.rl-aimodulemaker-container {
+    padding: 15px;
+}
+
+/* Panel Customizations */
+.rl-aimodulemaker-panel {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    margin-bottom: 20px;
+}
+
+.rl-aimodulemaker-panel .panel-heading {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 15px;
+}
+
+.rl-aimodulemaker-panel .panel-heading i {
+    margin-right: 8px;
+}
+
+.rl-aimodulemaker-panel .panel-body {
+    padding: 20px;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.status-badge.development {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.status-badge.testing {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.status-badge.production {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.status-badge.archived {
+    background-color: #f5f5f5;
+    color: #616161;
+}
+
+/* Form Styling */
+.rl-form-group {
+    margin-bottom: 20px;
+}
+
+.rl-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.rl-form-group .help-text {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* Button Customizations */
+.rl-btn {
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.rl-btn i {
+    margin-right: 6px;
+}
+
+.rl-btn-primary {
+    background: #1976d2;
+    color: white;
+    border: none;
+}
+
+.rl-btn-primary:hover {
+    background: #1565c0;
+}
+
+/* API Status Indicators */
+.api-status {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.api-status .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.api-status .status-dot.active {
+    background-color: #4caf50;
+}
+
+.api-status .status-dot.inactive {
+    background-color: #f44336;
+}
+
+/* Loading States */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #1976d2;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Alert Messages */
+.rl-alert {
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border-left: 4px solid transparent;
+}
+
+.rl-alert-success {
+    background-color: #e8f5e9;
+    border-left-color: #4caf50;
+    color: #2e7d32;
+}
+
+.rl-alert-warning {
+    background-color: #fff3e0;
+    border-left-color: #ff9800;
+    color: #ef6c00;
+}
+
+.rl-alert-error {
+    background-color: #ffebee;
+    border-left-color: #f44336;
+    color: #c62828;
+}
+
+/* Modal Customizations */
+.rl-modal .modal-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 15px 20px;
+}
+
+.rl-modal .modal-body {
+    padding: 20px;
+}
+
+.rl-modal .modal-footer {
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    padding: 15px 20px;
+}
+
+/* Utility Classes */
+.margin-top-1 { margin-top: 10px; }
+.margin-bottom-1 { margin-bottom: 10px; }
+.margin-left-1 { margin-left: 10px; }
+.margin-right-1 { margin-right: 10px; }
+
+.text-success { color: #4caf50; }
+.text-warning { color: #ff9800; }
+.text-error { color: #f44336; }
+.text-muted { color: #757575; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .rl-aimodulemaker-panel {
+        margin-bottom: 15px;
+    }
+
+    .rl-aimodulemaker-panel .panel-body {
+        padding: 15px;
+    }
+
+    .rl-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

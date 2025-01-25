@@ -1,0 +1,157 @@
+# Admin Routes
+admin_aimodulemaker_dashboard:
+    path: aimodulemaker/dashboard
+    methods: [GET]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::dashboardAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+        _legacy_link: 'AdminRlAiModuleMaker'
+
+admin_aimodulemaker_list:
+    path: aimodulemaker/modules
+    methods: [GET]
+    defaults:
+        _controller: 'AdminRlAiModuleListController::listAction'
+        _legacy_controller: 'AdminRlAiModuleList'
+        _legacy_link: 'AdminRlAiModuleList'
+
+admin_aimodulemaker_create:
+    path: aimodulemaker/create
+    methods: [GET, POST]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::createAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+        _legacy_link: 'AdminRlAiModuleMaker'
+
+admin_aimodulemaker_edit:
+    path: aimodulemaker/edit/{id}
+    methods: [GET, POST]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::editAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+        _legacy_link: 'AdminRlAiModuleMaker'
+    requirements:
+        id: '\d+'
+
+admin_aimodulemaker_delete:
+    path: aimodulemaker/delete/{id}
+    methods: [POST, DELETE]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::deleteAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+        _legacy_link: 'AdminRlAiModuleMaker'
+    requirements:
+        id: '\d+'
+
+admin_aimodulemaker_settings:
+    path: aimodulemaker/settings
+    methods: [GET, POST]
+    defaults:
+        _controller: 'AdminRlAiSettingsController::indexAction'
+        _legacy_controller: 'AdminRlAiSettings'
+        _legacy_link: 'AdminRlAiSettings'
+
+# API Routes
+admin_aimodulemaker_ai_chat:
+    path: aimodulemaker/api/chat
+    methods: [POST]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::aiChatAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+
+admin_aimodulemaker_generate_code:
+    path: aimodulemaker/api/generate
+    methods: [POST]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::generateCodeAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+
+admin_aimodulemaker_analyze_code:
+    path: aimodulemaker/api/analyze
+    methods: [POST]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::analyzeCodeAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+
+# File Management Routes
+admin_aimodulemaker_files:
+    path: aimodulemaker/files/{id}
+    methods: [GET]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::filesAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+    requirements:
+        id: '\d+'
+
+admin_aimodulemaker_file_content:
+    path: aimodulemaker/file/{id}/{path}
+    methods: [GET]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::fileContentAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+    requirements:
+        id: '\d+'
+        path: '.+'
+
+admin_aimodulemaker_save_file:
+    path: aimodulemaker/file/save/{id}/{path}
+    methods: [POST]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::saveFileAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+    requirements:
+        id: '\d+'
+        path: '.+'
+
+# Version Management Routes
+admin_aimodulemaker_versions:
+    path: aimodulemaker/versions/{id}
+    methods: [GET]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::versionsAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+    requirements:
+        id: '\d+'
+
+admin_aimodulemaker_create_version:
+    path: aimodulemaker/version/create/{id}
+    methods: [POST]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::createVersionAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+    requirements:
+        id: '\d+'
+
+# GitHub Integration Routes
+admin_aimodulemaker_github_sync:
+    path: aimodulemaker/github/sync/{id}
+    methods: [POST]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::githubSyncAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+    requirements:
+        id: '\d+'
+
+admin_aimodulemaker_github_webhook:
+    path: aimodulemaker/github/webhook
+    methods: [POST]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::githubWebhookAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+
+# Export/Import Routes
+admin_aimodulemaker_export:
+    path: aimodulemaker/export/{id}
+    methods: [GET]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::exportAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'
+    requirements:
+        id: '\d+'
+
+admin_aimodulemaker_import:
+    path: aimodulemaker/import
+    methods: [POST]
+    defaults:
+        _controller: 'AdminRlAiModuleMakerController::importAction'
+        _legacy_controller: 'AdminRlAiModuleMaker'

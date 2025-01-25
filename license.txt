@@ -1,0 +1,38 @@
+Commercial License
+
+Copyright (c) 2025 Ljustema Sverige AB
+
+All rights reserved.
+
+This software is the proprietary information of Ljustema Sverige AB. Use is subject to license terms.
+
+This license agreement ("License") is a legal agreement between you (either an individual or a single entity) and Ljustema Sverige AB for the software product identified above, which includes computer software and may include associated media, printed materials, and "online" or electronic documentation ("Software Product").
+
+By installing, copying, or otherwise using the Software Product, you agree to be bound by the terms of this License. If you do not agree to the terms of this License, do not install or use the Software Product.
+
+1. GRANT OF LICENSE
+Ljustema Sverige AB grants you the following rights provided that you comply with all terms and conditions of this License:
+- Installation and Use: You may install and use one copy of the Software Product on a single PrestaShop installation.
+- Reproduction and Distribution: You may not distribute copies of the Software Product to third parties.
+- Rental: You may not rent, lease, or lend the Software Product.
+
+2. COPYRIGHT
+All title and copyrights in and to the Software Product (including but not limited to any images, text, and "applets" incorporated into the Software Product), the accompanying printed materials, and any copies of the Software Product are owned by Ljustema Sverige AB. The Software Product is protected by copyright laws and international treaty provisions.
+
+3. DESCRIPTION OF OTHER RIGHTS AND LIMITATIONS
+- Limitations on Reverse Engineering, Decompilation, and Disassembly: You may not reverse engineer, decompile, or disassemble the Software Product.
+- Separation of Components: The Software Product is licensed as a single product. Its component parts may not be separated for use on more than one computer.
+- Support Services: Ljustema Sverige AB may provide you with support services related to the Software Product. Use of Support Services is governed by Ljustema Sverige AB policies and programs.
+
+4. TERMINATION
+Without prejudice to any other rights, Ljustema Sverige AB may terminate this License if you fail to comply with the terms and conditions of this License. In such event, you must destroy all copies of the Software Product.
+
+5. NO WARRANTIES
+Ljustema Sverige AB expressly disclaims any warranty for the Software Product. The Software Product and any related documentation is provided "as is" without warranty of any kind, either express or implied.
+
+6. LIMITATION OF LIABILITY
+In no event shall Ljustema Sverige AB be liable for any damages whatsoever arising out of the use of or inability to use this Software Product.
+
+For questions about this license or to purchase additional licenses, please contact:
+Ljustema Sverige AB
+info@ljustema.se
