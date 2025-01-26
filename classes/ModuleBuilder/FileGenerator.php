@@ -4,8 +4,12 @@
  * @author Ljustema Sverige AB
  */
 
-class FileGenerator
-{
+ namespace PrestaShop\Module\ArtAimodulemaker\ModuleBuilder;
+
+ use Exception;
+ 
+ class FileGenerator
+ {
     /**
      * Skapa en fil med innehåll
      *

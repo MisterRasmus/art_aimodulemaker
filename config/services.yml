@@ -38,9 +38,11 @@ services:
             
     prestashop.module.art_aimodulemaker.file_generator:
         class: PrestaShop\Module\ArtAimodulemaker\ModuleBuilder\FileGenerator
+        public: true
         
     prestashop.module.art_aimodulemaker.validation_handler:
         class: PrestaShop\Module\ArtAimodulemaker\ModuleBuilder\ValidationHandler
+        public: true
         
     prestashop.module.art_aimodulemaker.openai_handler:
         class: PrestaShop\Module\ArtAimodulemaker\AiHandler\OpenAiHandler
@@ -51,6 +53,7 @@ services:
         class: PrestaShop\Module\ArtAimodulemaker\AiHandler\ClaudeHandler
         arguments:
             $apiRepository: '@prestashop.module.art_aimodulemaker.api_repository'
+        public: true
             
     prestashop.module.art_aimodulemaker.github_handler:
         class: PrestaShop\Module\ArtAimodulemaker\GitHandler\GitHubHandler
@@ -61,9 +64,11 @@ services:
     # Repositories as Services
     prestashop.module.art_aimodulemaker.api_repository:
         class: PrestaShop\Module\ArtAimodulemaker\Repository\ApiKeyRepository
+        public: true
         
     prestashop.module.art_aimodulemaker.module_repository:
         class: PrestaShop\Module\ArtAimodulemaker\Repository\ModuleRepository
+        public: true
         
     prestashop.module.art_aimodulemaker.version_repository:
         class: PrestaShop\Module\ArtAimodulemaker\Repository\VersionRepository
@@ -132,3 +137,11 @@ services:
         class: PrestaShop\Module\ArtAimodulemaker\Logger\ModuleLogger
         arguments:
             $logDir: '%kernel.logs_dir%/art_aimodulemaker'
+
+    prestashop.module.art_aimodulemaker.module_generator:
+        class: PrestaShop\Module\ArtAimodulemaker\ModuleBuilder\ModuleGenerator
+        public: true
+        arguments:
+            $fileGenerator: '@prestashop.module.art_aimodulemaker.file_generator'
+            $validator: '@prestashop.module.art_aimodulemaker.validation_handler'
+            $aiHandler: '@prestashop.module.art_aimodulemaker.claude_handler'

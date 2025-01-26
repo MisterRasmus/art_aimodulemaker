@@ -4,29 +4,29 @@
  * @author Ljustema Sverige AB
  */
 
-namespace PrestaShop\Module\ArtAimodulemaker\AiHandler;
+ namespace PrestaShop\Module\ArtAimodulemaker\AiHandler;
 
-class OpenAiHandler implements AiHandlerInterface
-{
-    /** @var string */
-    private $apiKey;
+ use Configuration;
+ use PrestaShop\Module\ArtAimodulemaker\Database\ApiKeyRepository;
 
-    /** @var string */
-    private $model;
-
-    /** @var array */
-    private $defaultHeaders;
-
-    public function __construct()
-    {
-        $this->apiKey = Configuration::get('ARTAIMODULEMAKER_OPENAI_API_KEY');
-        $this->model = Configuration::get('ARTAIMODULEMAKER_OPENAI_MODEL', 'gpt-4');
-        
-        $this->defaultHeaders = [
-            'Authorization: Bearer ' . $this->apiKey,
-            'Content-Type: application/json',
-        ];
-    }
+ class OpenAiHandler implements AiHandlerInterface
+ {
+     private $apiKey;
+     private $model;
+     private $defaultHeaders;
+     private $apiRepository;
+ 
+     public function __construct(ApiKeyRepository $apiRepository)
+     {
+         $this->apiRepository = $apiRepository;
+         $this->apiKey = $this->apiRepository->getApiKey('openai');
+         $this->model = Configuration::get('ARTAIMODULEMAKER_OPENAI_MODEL', 'gpt-4');
+         
+         $this->defaultHeaders = [
+             'Authorization: Bearer ' . $this->apiKey,
+             'Content-Type: application/json',
+         ];
+     }
 
     public function generateCode(string $prompt, array $context = []): string
     {
@@ -48,7 +48,7 @@ class OpenAiHandler implements AiHandlerInterface
         ]);
 
         if (!isset($response['choices'][0]['message']['content'])) {
-            throw new Exception('Invalid response from OpenAI');
+            throw new \Exception('Invalid response from OpenAI');
         }
 
         return $response['choices'][0]['message']['content'];
@@ -86,7 +86,7 @@ class OpenAiHandler implements AiHandlerInterface
         ]);
 
         if (!isset($response['choices'][0]['message']['content'])) {
-            throw new Exception('Invalid response from OpenAI');
+            throw new \Exception('Invalid response from OpenAI');
         }
 
         return $response['choices'][0]['message']['content'];
@@ -115,7 +115,7 @@ Additional context:
         ]), true);
 
         if (!$response) {
-            throw new Exception('Failed to parse analysis response');
+            throw new \Exception('Failed to parse analysis response');
         }
 
         return $response;
@@ -126,8 +126,8 @@ Additional context:
         try {
             $response = $this->makeApiRequest('https://api.openai.com/v1/models', [], 'GET');
             return isset($response['data']) && is_array($response['data']);
-        } catch (Exception $e) {
-            throw new Exception('OpenAI connection test failed: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            throw new \Exception('OpenAI connection test failed: ' . $e->getMessage());
         }
     }
 
@@ -168,7 +168,7 @@ Additional context:
     private function makeApiRequest(string $endpoint, array $data = [], string $method = 'POST'): array
     {
         if (!$this->apiKey) {
-            throw new Exception('OpenAI API key not configured');
+            throw new \Exception('OpenAI API key not configured');
         }
 
         $ch = curl_init($endpoint);
@@ -190,19 +190,19 @@ Additional context:
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         
         if (curl_errno($ch)) {
-            throw new Exception('OpenAI API request failed: ' . curl_error($ch));
+            throw new \Exception('OpenAI API request failed: ' . curl_error($ch));
         }
         
         curl_close($ch);
 
         if ($httpCode !== 200) {
-            throw new Exception('OpenAI API returned error: ' . $response);
+            throw new \Exception('OpenAI API returned error: ' . $response);
         }
 
         $decodedResponse = json_decode($response, true);
         
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new Exception('Failed to decode OpenAI response');
+            throw new \Exception('Failed to decode OpenAI response');
         }
 
         return $decodedResponse;

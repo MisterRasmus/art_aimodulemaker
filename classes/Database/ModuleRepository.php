@@ -4,11 +4,15 @@
  * @author Ljustema Sverige AB
  */
 
-namespace PrestaShop\Module\ArtAimodulemaker\Database;
+ namespace PrestaShop\Module\ArtAimodulemaker\Database;
 
-class ModuleRepository
-{
-    private const TABLE_NAME = 'art_aimodulemaker_modules';
+ use Db;
+ use DbQuery;
+ use Exception;
+ 
+ class ModuleRepository
+ {
+     private const TABLE_NAME = 'art_aimodulemaker_modules';
 
     /**
      * Skapa en ny modul

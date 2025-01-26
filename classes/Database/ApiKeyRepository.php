@@ -6,8 +6,12 @@
 
  namespace PrestaShop\Module\ArtAimodulemaker\Database;
 
-class ApiKeyRepository
-{
+ use Configuration;
+ use Db;
+ use DbQuery;
+ 
+ class ApiKeyRepository
+ {
     private const ENCRYPTION_KEY = _COOKIE_KEY_; // Använder PrestaShops cookie-nyckel för kryptering
     private const TABLE_NAME = 'art_aimodulemaker_api_keys';
 

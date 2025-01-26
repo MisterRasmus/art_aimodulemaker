@@ -4,33 +4,32 @@
  * @author Ljustema Sverige AB
  */
 
+namespace PrestaShop\Module\ArtAimodulemaker\ModuleBuilder;
+
+use PrestaShop\Module\ArtAimodulemaker\AiHandler\AiHandlerInterface;
+use PrestaShop\Module\ArtAimodulemaker\AiHandler\ClaudeHandler;
+use PrestaShop\Module\ArtAimodulemaker\AiHandler\OpenAiHandler;
+
 class ModuleGenerator
 {
-    /** @var array */
     private $moduleData;
-
-    /** @var string */
     private $outputPath;
-
-    /** @var FileGenerator */
     private $fileGenerator;
-
-    /** @var ValidationHandler */
     private $validator;
-
-    /** @var AiHandlerInterface */
     private $aiHandler;
-
-    public function __construct(array $moduleData, string $outputPath)
-    {
+    
+    public function __construct(
+        array $moduleData, 
+        string $outputPath,
+        FileGenerator $fileGenerator,
+        ValidationHandler $validator,
+        AiHandlerInterface $aiHandler
+    ) {
         $this->moduleData = $moduleData;
         $this->outputPath = $outputPath;
-        $this->fileGenerator = new FileGenerator();
-        $this->validator = new ValidationHandler();
-        
-        // Välj AI handler baserat på konfiguration
-        $aiModel = Configuration::get('ARTAIMODULEMAKER_DEFAULT_AI', 'openai');
-        $this->aiHandler = $aiModel === 'claude' ? new ClaudeHandler() : new OpenAiHandler();
+        $this->fileGenerator = $fileGenerator;
+        $this->validator = $validator;
+        $this->aiHandler = $aiHandler;
     }
 
     /**

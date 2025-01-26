@@ -4,8 +4,10 @@
  * @author Ljustema Sverige AB
  */
 
-interface GitHandlerInterface
-{
+ namespace PrestaShop\Module\ArtAimodulemaker\GitHandler;
+
+ interface GitHandlerInterface
+ {
     /**
      * Initialize a new repository
      *

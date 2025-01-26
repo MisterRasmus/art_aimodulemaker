@@ -4,8 +4,15 @@
  * @author Ljustema Sverige AB
  */
 
-class ValidationHandler
-{
+ namespace PrestaShop\Module\ArtAimodulemaker\ModuleBuilder;
+
+ use Exception;
+ use Validate;
+ use Configuration;
+ use Tools;
+ 
+ class ValidationHandler
+ {
     /**
      * Validera moduldata innan generering
      *

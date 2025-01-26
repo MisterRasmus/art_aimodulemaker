@@ -4,32 +4,26 @@
  * @author Ljustema Sverige AB
  */
 
-namespace PrestaShop\Module\ArtAimodulemaker\GitHandler;
-// Lägg till överst i filen
-use PrestaShop\Module\ArtAimodulemaker\Database\ModuleRepository;
+ namespace PrestaShop\Module\ArtAimodulemaker\GitHandler;
 
-class GitHubHandler implements GitHandlerInterface
-{
-    /** @var string */
-    private $token;
-
-    /** @var string */
-    private $username;
-
-    /** @var string */
-    private $organization;
-
-    /** @var array */
-    private $defaultHeaders;
-
-    /** @var ModuleRepository */
-    private $moduleRepository;
-
-    public function __construct()
-    {
-        $this->token = Configuration::get('ARTAIMODULEMAKER_GITHUB_TOKEN');
-        $this->username = Configuration::get('ARTAIMODULEMAKER_GITHUB_USERNAME');
-        $this->organization = Configuration::get('ARTAIMODULEMAKER_GITHUB_ORG');
+ use Configuration;
+ use Exception;
+ use PrestaShop\Module\ArtAimodulemaker\Database\ModuleRepository;
+ 
+ class GitHubHandler implements GitHandlerInterface
+ {
+     private $token;
+     private $username;
+     private $organization;
+     private $defaultHeaders;
+     private $moduleRepository;
+ 
+     public function __construct(ModuleRepository $moduleRepository)
+     {
+         $this->moduleRepository = $moduleRepository;
+         $this->token = Configuration::get('ARTAIMODULEMAKER_GITHUB_TOKEN');
+         $this->username = Configuration::get('ARTAIMODULEMAKER_GITHUB_USERNAME');
+         $this->organization = Configuration::get('ARTAIMODULEMAKER_GITHUB_ORG');
         
         $this->defaultHeaders = [
             'Authorization: token ' . $this->token,

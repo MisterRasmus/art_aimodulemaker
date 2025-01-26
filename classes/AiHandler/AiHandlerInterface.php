@@ -4,6 +4,8 @@
  * @author Ljustema Sverige AB
  */
 
+namespace PrestaShop\Module\ArtAimodulemaker\AiHandler;
+
 interface AiHandlerInterface
 {
     /**
@@ -12,7 +14,7 @@ interface AiHandlerInterface
      * @param string $prompt The user's prompt/request
      * @param array $context Additional context about the module
      * @return string Generated code
-     * @throws Exception If code generation fails
+     * @throws \Exception If code generation fails
      */
     public function generateCode(string $prompt, array $context = []): string;
 
@@ -22,7 +24,7 @@ interface AiHandlerInterface
      * @param string $message User's message
      * @param array $conversation Previous conversation history
      * @return string AI response
-     * @throws Exception If chat fails
+     * @throws \Exception If chat fails
      */
     public function chat(string $message, array $conversation = []): string;
 
@@ -32,7 +34,7 @@ interface AiHandlerInterface
      * @param string $code Code to analyze
      * @param array $context Additional context about the code
      * @return array Analysis results and suggestions
-     * @throws Exception If analysis fails
+     * @throws \Exception If analysis fails
      */
     public function analyzeCode(string $code, array $context = []): array;
 
@@ -40,7 +42,7 @@ interface AiHandlerInterface
      * Test the API connection
      *
      * @return bool True if connection is successful
-     * @throws Exception If connection test fails
+     * @throws \Exception If connection test fails
      */
     public function testConnection(): bool;
 
