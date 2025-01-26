@@ -3,7 +3,20 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-require_once __DIR__ . '/vendor/autoload.php';
+spl_autoload_register(function ($class) {
+    $prefix = 'PrestaShop\\Module\\ArtAimodulemaker\\';
+    $baseDir = __DIR__ . '/classes/';
+
+    // Kontrollera om klassen är en del av modulen
+    if (strpos($class, $prefix) === 0) {
+        $relativeClass = str_replace($prefix, '', $class);
+        $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
+
+        if (file_exists($file)) {
+            require_once $file;
+        }
+    }
+});
 
 class Art_aimodulemaker extends Module
 {
